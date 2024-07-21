@@ -66,6 +66,7 @@ function parseCLIFlags(flag: string): Record<string, string[]> {
   }
 
   const result: Record<string, string[]> = {};
+  let lastKey = '';
 
   args.forEach(arg => {
     let match = arg.match(/^--([^=]+)=(.*)$/);
@@ -81,6 +82,7 @@ function parseCLIFlags(flag: string): Record<string, string[]> {
       }
 
       result[key].push(value);
+      lastKey = '';
     } else {
       let standaloneMatch = arg.match(/^--(.+)$/);
       if (!standaloneMatch) {
@@ -91,8 +93,14 @@ function parseCLIFlags(flag: string): Record<string, string[]> {
         if (!result[key]) {
           result[key] = [];
         }
+
+        lastKey = key;
       } else {
-        throw new InvalidFlagError(arg);
+        if (lastKey) {
+          result[lastKey].push(arg);
+        } else {
+          throw new InvalidFlagError(arg);
+        }
       }
     }
   });
@@ -108,14 +116,14 @@ function parseCLIFlags(flag: string): Record<string, string[]> {
  * @returns {CLICommand} Parsed CLI command
  */
 export function parseCLI(cli: string): CLICommand {
-  const tokens = cli.split(/\s+/);
+  const tokens = cli.trim().split(/\s+/);
 
   const command = tokens[0];
   const args = [];
 
   let idx = 1;
 
-  while (!tokens[idx].startsWith('-')) {
+  while (idx < tokens.length && !tokens[idx].startsWith('-')) {
     args.push(tokens[idx++]);
   }
 
