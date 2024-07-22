@@ -122,10 +122,14 @@ describe('parseCLI', () => {
   it('should throw error when there are multiple = in same flag', () => {
     const command = `jest src/* -f=foo=ss`;
 
-    expect(() => parseCLI(command)).toThrowError(InvalidFlagError);
+    const cli = parseCLI(command);
+
+    expect(cli.command).toBe('jest');
+    expect(cli.args).toStrictEqual(['src/*']);
+    expect(cli.flags).toStrictEqual({ f: ['foo=ss'] });
   });
 
-  it('should allow = in flag that is written without equal sign', () => {
+  it('should allow equal sign in flag that is written without equal sign', () => {
     const command = `jest src/* -f foo=ss`;
 
     const cli = parseCLI(command);
@@ -133,5 +137,15 @@ describe('parseCLI', () => {
     expect(cli.command).toBe('jest');
     expect(cli.args).toStrictEqual(['src/*']);
     expect(cli.flags).toStrictEqual({ f: ['foo=ss'] });
+  });
+
+  it('should allow equal sign without preceding values', () => {
+    const command = `jest src/* --foo=`;
+
+    const cli = parseCLI(command);
+
+    expect(cli.command).toBe('jest');
+    expect(cli.args).toStrictEqual(['src/*']);
+    expect(cli.flags).toStrictEqual({ foo: [''] });
   });
 });
