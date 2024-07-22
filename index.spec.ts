@@ -148,4 +148,10 @@ describe('parseCLI', () => {
     expect(cli.args).toStrictEqual(['src/*']);
     expect(cli.flags).toStrictEqual({ foo: [''] });
   });
+
+  it('should throw error if CLI encounters positional arguments after flag', () => {
+    const command = `jest src/* --foo=bar dist/*`;
+
+    expect(() => parseCLI(command)).toThrowError(InvalidFlagError);
+  });
 });
