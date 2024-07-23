@@ -70,9 +70,13 @@ Thrown when the parser encounters unclosed flag quotation or incorrect positiona
 
 TL;DR: This is a more primitive package of CLI builders that only support simple parsing of commands.
 
-### Does this support multi-commands (e.g: `a && b`)?
+### Does this package support chained commands (e.g: `a && b`)?
 
-No, split it yourself.
+No, split it yourself for now. However if there is a demand for it, I'll consider it.
+
+### Does this package support nested commands (e.g: `a \`b\``)
+
+Not at the moment. However if there is a demand for it, I'll consider it.
 
 ## License
 
