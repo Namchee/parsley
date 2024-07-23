@@ -10,7 +10,7 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
-    "noEmit": false,
+    "noEmit": true,
 
     /* Linting */
     "skipLibCheck": true,
@@ -24,5 +24,11 @@
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
     "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "index.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
+  ]
 }

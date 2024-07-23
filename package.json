@@ -1,7 +1,10 @@
 {
   "name": "@namchee/parsley",
+  "version": "1.0.0",
   "description": "Parse CLI command, arguments, and flags from a string",
-  "module": "dist/index.ts",
+  "module": "dist/index.js",
+  "exports": "./dist/index.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "author": {
     "name": "Cristopher Namchee",
@@ -11,9 +14,13 @@
   "keywords": [
     "cli"
   ],
+  "files": [
+    "./dist"
+  ],
   "scripts": {
-    "build": "bun build ./index.ts --outdir ./dist --minify",
-     "build:declaration": "tsc --emitDeclarationOnly ",
+    "build": "bun run build:code && bun run build:declaration",
+    "build:code": "bun build ./index.ts --outdir ./dist --minify",
+    "build:declaration": "tsc --emitDeclarationOnly --outdir ./dist",
     "test": "bun test --watch",
     "ci:version": "pnpm changeset version",
     "ci:publish": "pnpm publish --no-git-checks"
