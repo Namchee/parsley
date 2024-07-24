@@ -1,0 +1,13 @@
+{
+  "name": "@namchee/parsley",
+  "version": "1.0.0",
+  "description": "Parse CLI command, arguments, and flags from a string",
+  "exports": "./index.ts",
+  "publish": {
+    "include": [
+      "LICENSE",
+      "README.md",
+      "index.ts"
+    ]
+  }
+}

@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Parse CLI command, arguments, and flags from a string",
   "main": "dist/index.js",
-  "exports": "./index.ts",
   "types": "dist/index.d.ts",
   "type": "module",
   "author": {
@@ -23,7 +22,9 @@
     "build:declaration": "tsc --emitDeclarationOnly --outdir ./dist",
     "test": "vitest",
     "ci:version": "bunx changeset version",
-    "ci:publish": "npm publish --no-git-checks"
+    "ci:publish": "bun run ci:publish:npm && bun run ci:publish:jsr",
+    "ci:publish:npm": "npm publish --no-git-checks",
+    "ci:publish:jsr": "bunx jsr publish --no-git-checks"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
