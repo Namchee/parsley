@@ -1,6 +1,6 @@
 {
   "name": "@namchee/parsley",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parse CLI command, arguments, and flags from a string",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,6 +14,7 @@
     "cli"
   ],
   "files": [
+    "index.ts",
     "./dist"
   ],
   "scripts": {
