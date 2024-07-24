@@ -25,7 +25,7 @@
     "ci:version": "bunx changeset version",
     "ci:publish": "bun run ci:publish:npm && bun run ci:publish:jsr",
     "ci:publish:npm": "npm publish --no-git-checks",
-    "ci:publish:jsr": "bunx jsr publish --no-git-checks"
+    "ci:publish:jsr": "bunx jsr publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
