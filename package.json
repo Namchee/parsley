@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Parse CLI command, arguments, and flags from a string",
   "main": "dist/index.js",
+  "exports": "./index.ts",
   "types": "dist/index.d.ts",
   "type": "module",
   "author": {

@@ -1,4 +1,4 @@
-name: Release new configuration version to npm
+name: Release new version to npm
 
 on:
   push:
@@ -21,11 +21,13 @@ jobs:
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
         run: bun install
+      - name: Build the package
+        run: bun run build
       - name: Create and publish version
         uses: changesets/action@v1
         with:
-          version: bun ci:version
-          publish: bun ci:publish
+          version: bun run ci:version
+          publish: bun run ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
