@@ -66,7 +66,7 @@ Thrown when the parser encounters unclosed flag quotation or incorrect positiona
 ### What's the difference between this and CLI builders
 
 1. This package doesn't support pre-defined template other than flag aliases
-2. This package doesn't automatically read your arguments and parse it, you must provide the command string to it.
+2. This package doesn't automatically read your arguments and parse it, you must provide the string yourself.
 
 TL;DR: This is a more primitive package of CLI builders that only support simple parsing of commands.
 
@@ -77,6 +77,10 @@ No, split it yourself for now. However if there is a demand for it, I'll conside
 ### Does this package support nested commands (e.g: `a \`b\``)
 
 Not at the moment. However if there is a demand for it, I'll consider it.
+
+### Where does the name come from?
+
+`parsecli` sounds similar to Parsley
 
 ## License
 
